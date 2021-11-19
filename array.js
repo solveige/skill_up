@@ -29,4 +29,8 @@ const team = [
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-module.exports = { team, numbers }
+const nestedArray = [ 1, 2, 3, [4, 5, 6], [7, [8, 9,], 10]]
+
+const text = ["apple orange cherry", "melon"]
+
+module.exports = { team, numbers, nestedArray, text }
