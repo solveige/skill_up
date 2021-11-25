@@ -1,5 +1,5 @@
-const arePositive = (data) => data.every((item)=> item > 0)
+const isGreaterThen0 = item => item > 0
 
-const areBiggerThen5 = (data) => data.every((item)=> item > 5)
+const isGreaterThen5 = item => item > 5
 
-module.exports = {arePositive, areBiggerThen5}
+module.exports = {isGreaterThen0, isGreaterThen5}

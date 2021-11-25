@@ -1,7 +1,4 @@
-const getValues = (prop) => (data) => data.map((entity) => entity[prop])
-const add = (number) => (data) => data.map((item) => item + number)
+const names = entity => entity.name
+const addTen = number => number + 10
 
-const getNames = getValues('name')
-const addTen = add(10)
-
-module.exports = {getNames, addTen}
+module.exports = {names, addTen}

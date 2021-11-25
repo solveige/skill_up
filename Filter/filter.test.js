@@ -1,5 +1,5 @@
 const { team } = require('../array.js');
-const { getFrontend, get } = require('./filter');
+const { frontendTeam, designTeam } = require('./filter');
 
 const expectedResult = [
   {
@@ -17,9 +17,9 @@ const expectedResult = [
 const empty = []
 
 test('return array of objects with position value "Frontend"', () => {
-  expect(getFrontend(team)).toStrictEqual(expectedResult);
+  expect(team.filter(frontendTeam)).toStrictEqual(expectedResult);
 });
 
 test('return empty array', () => {
-  expect(get('age')('30')(team)).toStrictEqual(empty);
+  expect(team.filter(designTeam)).toStrictEqual(empty);
 });

@@ -1,7 +1,5 @@
-const findWithExperience = (value) => (data) => data.find((entity) => entity.experience > value)
+const withExperienceOver10 = entity => entity.experience > 10
 
-const withExperienceOver10 = findWithExperience(10)
-
-const withExperienceOver20 = findWithExperience(20)
+const withExperienceOver20 = entity => entity.experience > 20
 
 module.exports = {withExperienceOver10,  withExperienceOver20}

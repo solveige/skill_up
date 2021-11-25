@@ -1,10 +1,10 @@
-const { numbers } = require('../array.js');
-const { hasEvenNumber,  hasNegativeNumber } = require('./some');
+const { fromZeroToTen } = require('../array.js');
+const { isEvenNumber,  isNegativeNumber } = require('./some');
 
 test('return true', () => {
-    expect(hasEvenNumber(numbers)).toBe(true);
+    expect(fromZeroToTen.some(isEvenNumber)).toBe(true);
 });
 
 test('return false', () => {
-    expect(hasNegativeNumber(numbers)).toBe(false);
+    expect(fromZeroToTen.some(isNegativeNumber)).toBe(false);
 });

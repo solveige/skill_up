@@ -1,10 +1,10 @@
-const { numbers } = require('../array.js');
-const { arePositive, areBiggerThen5 } = require('./every');
+const { fromZeroToTen } = require('../array.js');
+const { isGreaterThen0, isGreaterThen5 } = require('./every');
 
 test('return true', () => {
-    expect(arePositive(numbers)).toBe(true);
+    expect(fromZeroToTen.every(isGreaterThen0)).toBe(true);
 });
 
 test('return false', () => {
-    expect(areBiggerThen5(numbers)).toBe(false);
+    expect(fromZeroToTen.every(isGreaterThen5)).toBe(false);
 });

@@ -1,5 +1,5 @@
-const hasEvenNumber = (data) => data.some((item) => item % 2 === 0)
+const isEvenNumber = item => item % 2 === 0
 
-const hasNegativeNumber = (data) => data.some((item) => item < 0)
+const isNegativeNumber = item => item < 0
 
-module.exports = {hasEvenNumber,  hasNegativeNumber}
+module.exports = {isEvenNumber,  isNegativeNumber}

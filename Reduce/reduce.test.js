@@ -1,4 +1,4 @@
-const { team, numbers } = require('../array.js');
+const { team, fromZeroToTen } = require('../array.js');
 const { groupByPosition, sum } = require('./reduce');
 
 const expectedResultTeam = {
@@ -32,9 +32,9 @@ const expectedResultTeam = {
 const expectedResultNumbers = 55
 
 test('return object with keys of team positions', () => {
-    expect(groupByPosition(team)).toStrictEqual(expectedResultTeam);
+    expect(team.reduce(groupByPosition, {})).toStrictEqual(expectedResultTeam);
 });
 
 test('return single number 55', () => {
-    expect(sum(numbers)).toBe(expectedResultNumbers);
+    expect(fromZeroToTen.reduce(sum, 0)).toBe(expectedResultNumbers);
 });

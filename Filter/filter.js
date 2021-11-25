@@ -1,5 +1,5 @@
-const get = (prop) => (value) => (data) => data.filter((entity) => entity[prop] === value)
+const frontendTeam = entity => entity.position === 'Frontend'
 
-const getFrontend = get('position')('Frontend')
+const designTeam = entity => entity.position === 'Designer'
 
-module.exports = { getFrontend,  get}
+module.exports = { frontendTeam, designTeam }

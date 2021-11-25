@@ -8,9 +8,9 @@ const expectedResult = {
 }
 
 test('return object with experience value over 10', () => {
-    expect(withExperienceOver10(team)).toStrictEqual(expectedResult);
+    expect(team.find(withExperienceOver10)).toStrictEqual(expectedResult);
 });
 
 test('return undefined', () => {
-    expect(withExperienceOver20(team)).toBe(undefined);
+    expect(team.find(withExperienceOver20)).toBe(undefined);
 });

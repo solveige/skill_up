@@ -1,14 +1,12 @@
-const groupBy = (prop) => (data) => data.reduce((acc, current) => {
+const groupByPosition = (acc, current) => {
     return {
         ...acc,
-        [current[prop]]: acc[current[prop]] ? [...acc[current[prop]], current] : [current]
+        [current.position]: acc[current.position] ? [...acc[current.position], current] : [current]
     }
-}, {})
+}
 
-const groupByPosition = groupBy('position')
-
-const sum = (data) => data.reduce((acc, current) => {
+const sum = (acc, current) => {
     return acc + current
-}, 0)
+}
 
 module.exports = { groupByPosition, sum }
