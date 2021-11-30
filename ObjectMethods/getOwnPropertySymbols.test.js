@@ -1,12 +1,14 @@
 test('return an array of one symbol property', () => {
-  const obj = {
-    a: Symbol('a'),
-    b: 'b'
-  };
-
-  const expectedResult = [Symbol('a')];
-
-  expect(Object.getOwnPropertySymbols(obj)).toStrictEqual(expectedResult);
+  const object1 = {};
+  const a = Symbol('a');
+  const b = Symbol.for('b');
+  
+  object1[a] = 'localSymbol';
+  object1[b] = 'globalSymbol';
+  
+  const objectSymbols = Object.getOwnPropertySymbols(object1);
+  
+  expect(objectSymbols).toHaveLength(2);
 });
 
 test('return an empty array as there no symbol properties directly upon a given object', () => {
