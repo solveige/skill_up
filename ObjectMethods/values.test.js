@@ -1,11 +1,11 @@
-const obj = {
-    1: 'a',
-    2: 'b',
-    3: 'c',
-}
+const pets = {
+  cat: 'Sirko',
+  dog: 'Lord',
+  duck: 'Brown',
+};
 
-const expectedResult = ['a', 'b', 'c']
+const expectedResult = ['Sirko', 'Lord', 'Brown'];
 
-test('values', () => {
-    expect(Object.values(obj)).toStrictEqual(expectedResult);
+test('return an array of enumerable property values of the object', () => {
+  expect(Object.values(pets)).toStrictEqual(expectedResult);
 });

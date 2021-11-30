@@ -1,23 +1,23 @@
-test('getOwnPropertySymbols', () => {
-    const obj = {
-        a: Symbol('a'),
-        b: 'b'
-    };
+test('return an array of one symbol property', () => {
+  const obj = {
+    a: Symbol('a'),
+    b: 'b'
+  };
 
-    const expectedResult = [Symbol('a')]
+  const expectedResult = [Symbol('a')];
 
-    expect(Object.getOwnPropertySymbols(obj)).toStrictEqual(expectedResult);
+  expect(Object.getOwnPropertySymbols(obj)).toStrictEqual(expectedResult);
 });
 
-test('getOwnPropertySymbols empty', () => {
-    const obj = {
-        a: {
-            aa: Symbol('a'),
-        },
-        b: 'b'
-    };
+test('return an empty array as there no symbol properties directly upon a given object', () => {
+  const obj = {
+    a: {
+      aa: Symbol('a'),
+    },
+    b: 'b',
+  };
 
-    const expectedResult = []
+  const expectedResult = [];
 
-    expect(Object.getOwnPropertySymbols(obj)).toStrictEqual(expectedResult);
+  expect(Object.getOwnPropertySymbols(obj)).toStrictEqual(expectedResult);
 });

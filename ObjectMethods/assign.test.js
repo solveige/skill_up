@@ -1,52 +1,54 @@
-const simpleObj = {
-  c: 4,
-  d: 5,
-  e: 6,
-}
+const scores = {
+  Anna: 4,
+  Helen: 5,
+  Diana: 6,
+};
 
 test('return copy of simpleObj', () => {
-    expect(Object.assign({}, simpleObj)).toStrictEqual(simpleObj);
-  });
-  
+  expect(Object.assign({}, scores)).toStrictEqual(scores);
+});
+
 test('merge two objects, overwrite the same keys', () => {
-  const target = { 
-    a: 1, 
-    b: 2, 
-    c: 3,
-  }
-  
+  const target = {
+    Anna: 1,
+    Marry: 2,
+    Helga: 3,
+  };
+
   const expectedResult = {
-    a: 1, 
-    b: 2, 
-    c: 4,
-    d: 5,
-    e: 6,
-  }
-  expect(Object.assign(target, simpleObj)).toStrictEqual(expectedResult);
+    Anna: 4,
+    Marry: 2,
+    Helga: 3,
+    Helen: 5,
+    Diana: 6,
+  };
+
+  expect(Object.assign(target, scores)).toStrictEqual(expectedResult);
 });
 
 test('wrap primitives to objects, ignore null and undefined', () => {
   const expectedResult = {
-    0: '1', 
-    1: '2', 
+    0: '1',
+    1: '2',
     2: '3',
-  }
-  expect(Object.assign({}, null, undefined, '123', 5 )).toStrictEqual(expectedResult);
+  };
+
+  expect(Object.assign({}, null, undefined, '123', 5)).toStrictEqual(expectedResult);
 });
 
 
-test('not deep clone', () => {
-const obj = {
-  name: 'Oksana',
-  address: {
-    city: 'Lviv',
-    street: 'Kulparkivska',
-  }
-}
+test('source is copied to an target object as a shallow copy', () => {
+  const obj = {
+    name: 'Oksana',
+    address: {
+      city: 'Lviv',
+      street: 'Kulparkivska',
+    }
+  };
 
-const copiedObj = Object.assign({}, obj)
+  const copiedObj = Object.assign({}, obj);
 
-obj.address.city = 'Toronto'
+  obj.address.city = 'Toronto';
 
   expect(copiedObj.address.city).toEqual('Toronto');
 });
