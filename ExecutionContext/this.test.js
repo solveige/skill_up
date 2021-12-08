@@ -1,6 +1,6 @@
 function returnContext() {
 	return this;
-}; 
+};
 
 test('function called in a global context refer on the global object', () => {
 	expect(returnContext()).toBe(global);
@@ -59,7 +59,7 @@ test('Arrow functions do not have their own this binding. They go up to the next
 		name: 'The Ostroh Academy',
 		yearFounded: 1576,
 
-		describe: function() {
+		describe: function () {
 			return {
 				method: () => `${this.name} was founded in ${this.yearFounded}.`
 			}
