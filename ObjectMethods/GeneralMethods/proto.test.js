@@ -9,7 +9,7 @@ test('prototype of custom class vs __proto__', () => {
     constructor(height, width) {
       this.height = height;
       this.width = width;
-    }
+    };
   };
 
   //  Rectangle.prototype: {constructor: ƒ}
