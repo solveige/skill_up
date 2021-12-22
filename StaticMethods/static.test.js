@@ -65,3 +65,17 @@ test('calling static methods of standard built-in objects', () => {
 
 	expect(Math.floor(155.333)).toBe(number);
 });
+
+test('private static methods are called on the class itself', () => {
+	const number = 42;
+	class ClassWithPrivateStaticMethod {
+		static #privateMethod() {
+			return number;
+		}
+
+		static publicMethod() {
+			return this.#privateMethod();
+		}
+	}
+	expect(ClassWithPrivateStaticMethod.publicMethod()).toBe(number);
+});
