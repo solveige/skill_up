@@ -24,9 +24,14 @@ test('describe function undefined, as it is looking for properties on the global
 });
 
 test('object method that uses this, refer to the properties of the object', () => {
+	const name = 'The Ostroh Academy';
+	const yearFounded = 1576;
+
+	const expectedResult = `${name} was founded in ${yearFounded}.`;
+
 	const ostrohAcademy = {
-		name: 'The Ostroh Academy',
-		yearFounded: 1576,
+		name,
+		yearFounded,
 
 		describe() {
 			return `${this.name} was founded in ${this.yearFounded}.`;
@@ -35,40 +40,44 @@ test('object method that uses this, refer to the properties of the object', () =
 
 	const describeOstrohAcademy = ostrohAcademy.describe();
 
-	const expectedResult = 'The Ostroh Academy was founded in 1576.';
-
 	expect(describeOstrohAcademy).toBe(expectedResult);
 });
 
 test('Arrow functions do not have their own this binding. They go up to the next level of execution. In this case it is undefined', () => {
+	const name = 'The Ostroh Academy';
+	const yearFounded = 1576;
+
+	const expectedResult = `${name} was founded in ${yearFounded}.`;
+
 	const ostrohAcademy = {
-		name: 'The Ostroh Academy',
-		yearFounded: 1576,
+		name,
+		yearFounded,
 		describe: () => `${this.name} was founded in ${this.yearFounded}.`,
 	};
 
 	const describeOstrohAcademy = ostrohAcademy.describe();
 
-	const expectedResult = 'undefined was founded in undefined.';
-
-	expect(describeOstrohAcademy).toBe(expectedResult);
+	expect(describeOstrohAcademy).not.toBe(expectedResult);
 });
 
 test('Arrow functions do not have their own this binding. They go up to the next level of execution. In this case it is undefined', () => {
+	const name = 'The Ostroh Academy';
+	const yearFounded = 1576;
+
+	const expectedResult = `${name} was founded in ${yearFounded}.`;
+
 	const ostrohAcademy = {
-		name: 'The Ostroh Academy',
-		yearFounded: 1576,
+		name,
+		yearFounded,
 
 		describe: function () {
 			return {
 				method: () => `${this.name} was founded in ${this.yearFounded}.`
-			}
+			};
 		}
 	};
 
 	const describeOstrohAcademy = ostrohAcademy.describe().method();
-
-	const expectedResult = 'The Ostroh Academy was founded in 1576.';
 
 	expect(describeOstrohAcademy).toBe(expectedResult);
 });

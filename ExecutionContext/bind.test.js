@@ -4,15 +4,30 @@ test('using bind we create a new function with an bound this context', () => {
 		name: 'J. R. R. Tolkien'
 	};
 
+	const expectedResult = `${book.name} is ${book.nationality} author.`;
+
 	function summary() {
 		return `${this.name} is ${this.nationality} author.`;
 	}
 
 	const bookSummary = summary.bind(book);
 
-	const expectedResult = 'J. R. R. Tolkien is British author.';
-
 	expect(bookSummary()).toBe(expectedResult);
+});
+
+test('If this arg is passed to bind on invocation of an arrow function it will be ignored', () => {
+	const book = {
+		nationality: 'British',
+		name: 'J. R. R. Tolkien'
+	};
+
+	const expectedResult = `${book.name} is ${book.nationality} author.`;
+
+	const summary = () => `${this.name} is ${this.nationality} author.`;
+
+	const bookSummary = summary.bind(book);
+
+	expect(bookSummary()).not.toBe(expectedResult);
 });
 
 test('using bind we pass arguments additionally', () => {
@@ -21,28 +36,30 @@ test('using bind we pass arguments additionally', () => {
 		name: 'J. R. R. Tolkien'
 	};
 
+	const firstBook = 'The Hobbit';
+	const secondBook = 'The Lord of the Rings';
+
+	const expectedResult = `${book.name} is ${book.nationality} author. ${firstBook} and ${secondBook} are the most famous his works`;
+
 	function summary(book1, book2) {
 		return `${this.name} is ${this.nationality} author. ${book1} and ${book2} are the most famous his works`;
 	}
 
-	const bookSummary = summary.bind(book, 'The Hobbit', 'The Lord of the Rings');
-
-	const expectedResult = 'J. R. R. Tolkien is British author. The Hobbit and The Lord of the Rings are the most famous his works';
+	const bookSummary = summary.bind(book, firstBook, secondBook);
 
 	expect(bookSummary()).toBe(expectedResult);
 });
 
-	test('If this arg is passed to bind on invocation of an arrow function it will be ignored', () => {
-	const book = {
-		nationality: 'British',
-		name: 'J. R. R. Tolkien'
-	};
+test('bind arguments', () => {
+	const author = 'J. R. R. Tolkien'
+	const firstBook = 'The Hobbit';
+	const expectedResult = `${firstBook} was written by ${author}`;
 
-	const summary = () => `${this.name} is ${this.nationality} author.`;
+	function summary(author, book) {
+		return `${book} was written by ${author}`;
+	}
 
-	const bookSummary = summary.bind(book);
+	const summaryTolkien = summary.bind(null, author);
 
-	const expectedResult = 'undefined is undefined author.';
-
-	expect(bookSummary()).toBe(expectedResult);
+	expect(summaryTolkien(firstBook)).toBe(expectedResult);
 });
