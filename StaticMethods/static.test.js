@@ -21,9 +21,9 @@ test('static methods cannot be called through a class instance', () => {
 		}
 	};
 
-	const Add5 = new Add(5);
+	const add5 = new Add(5);
 
-	expect(Add5.addNumbers).not.toBe(Add.addNumbers);
+	expect(add5.addNumbers).not.toBe(Add.addNumbers);
 });
 
 test('static methods called on the class itself', () => {
@@ -37,10 +37,10 @@ test('static methods called on the class itself', () => {
 		}
 	};
 
-	const Add5 = new Add(5);
+	const add5 = new Add(5);
 	const expectedResult = 10;
 
-	expect(Add.addNumbers(Add5, Add5)).toBe(expectedResult);
+	expect(Add.addNumbers(add5, add5)).toBe(expectedResult);
 });
 
 test('static methods called on the class itself', () => {
@@ -74,7 +74,7 @@ test('private static methods are called on the class itself', () => {
 		}
 
 		static publicMethod() {
-			return this.#privateMethod();
+			return ClassWithPrivateStaticMethod.#privateMethod();
 		}
 	}
 	expect(ClassWithPrivateStaticMethod.publicMethod()).toBe(number);

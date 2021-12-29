@@ -1,32 +1,38 @@
 test('factory pattern', () => {
 	const positions = {
-		DEVELOPER: 'Developer',
-		QA: 'QA',
+		DEVELOPER: 'developer',
+		TESTER: 'tester',
 	}
 
-	function Developer(name) {
-		this.name = name;
-		this.position = positions.DEVELOPER;
+	class Developer {
+		constructor(name) {
+			this.name = name;
+			this.position = positions.DEVELOPER;
+		}
 	}
 
-	function QA(name) {
-		this.name = name;
-		this.position = positions.QA;
+	class Tester {
+		constructor(name) {
+			this.name = name;
+			this.position = positions.TESTER;
+		}
 	}
 
-	function EmployeeFactory() {
-		this.create = (name, type) => {
-			switch (type) {
-				case 1: return new Developer(name);
-					break;
-				case 2: return new QA(name);
-					break;
-			}
+	class EmployeeFactory {
+		static positionList = {
+			developer: Developer,
+			tester: Tester
+		}
+
+		create(name, type) {
+			const EmployeeWithType = EmployeeFactory.positionList[type]
+			const employee = new EmployeeWithType(name)
+			return employee
 		}
 	}
 
 	const employeeFactory = new EmployeeFactory();
-	const newEmployee = employeeFactory.create("Anna", 1);
+	const newEmployee = employeeFactory.create("Anna", positions.DEVELOPER);
 
 	expect(newEmployee.position).toBe(positions.DEVELOPER);
 });
