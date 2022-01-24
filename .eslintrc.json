@@ -1,14 +1,17 @@
 {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es2021": true,
-        "jest/globals": true
-    },
-    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-    "parserOptions": {
-        "ecmaVersion": 13
-    },
-    "rules": {
-    }
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "react-app/jest"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 13
+  },
+  "rules": {}
 }
