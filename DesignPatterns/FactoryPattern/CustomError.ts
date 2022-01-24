@@ -1,6 +1,6 @@
-export class NotExistingType extends Error {
+export class NotExistingEmployeeType extends Error {
   constructor(message: string) {
     super(message);
-    this.name = "NotExistingTypeError";
+    this.name = "NotExistingEmployeeType";
   }
 }

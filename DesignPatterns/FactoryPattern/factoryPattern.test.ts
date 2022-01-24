@@ -1,25 +1,24 @@
-import { Positions } from './types'
-import { isEnumValue } from './utils'
-import { NotExistingType } from './CustomError'
+import { positions, Positions } from './types'
+import { NotExistingEmployeeType } from './CustomError'
 
 test('factory pattern', () => {
 	class Developer {
-		name: string
-		position: Positions
+		name: string;
+		position: Positions;
 
 		constructor(name: string) {
 			this.name = name;
-			this.position = Positions.DEVELOPER;
+			this.position = 'developer';
 		}
 	}
 
 	class Tester {
-		name: string
-		position: Positions
+		name: string;
+		position: Positions;
 
 		constructor(name: string) {
 			this.name = name;
-			this.position = Positions.TESTER;
+			this.position = 'tester';
 		}
 	}
 
@@ -30,18 +29,19 @@ test('factory pattern', () => {
 		};
 
 		create(name: string, type: Positions) {
-			if (isEnumValue(Positions, type)) {
+			if (positions.includes(type)) {
 				const EmployeeWithType = EmployeeFactory.positionList[type];
 				const employee = new EmployeeWithType(name);
 				return employee;
-			} else {
-				throw new NotExistingType("You provided wrong employee type")
+			} 
+			else {
+				throw new NotExistingEmployeeType("You provided wrong employee type");
 			}
 		}
 	}
 
 	const employeeFactory = new EmployeeFactory();
-	const newEmployee = employeeFactory.create("Anna", Positions.DEVELOPER);
+	const newEmployee = employeeFactory.create("Anna", 'developer');
 
-	expect(newEmployee.position).toBe(Positions.DEVELOPER);
+	expect(newEmployee.position).toBe('developer');
 });
