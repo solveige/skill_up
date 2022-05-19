@@ -20,11 +20,11 @@ test('template pattern', () => {
 	const expectedResult = dishTemplateFn(margarita, bonAppetitWish);
 
 	abstract class DishReceipt {
-		abstract nameDish(): string
+		abstract nameDish(): string;
 
-		abstract prepareIngredients(): string
+		abstract prepareIngredients(): string;
 
-		abstract addSauce(): string
+		abstract addSauce(): string;
 
 		bonAppetit() {
 			return bonAppetitWish;

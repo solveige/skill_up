@@ -18,7 +18,7 @@ test('factory pattern', () => {
 
 		constructor(name: string) {
 			this.name = name;
-			this.position = 'tester';
+			this.position = 'manager';
 		}
 	}
 
